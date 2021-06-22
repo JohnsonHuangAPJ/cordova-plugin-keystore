@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-keystore" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>KeyStore</name>
+    <js-module name="KeyStore" src="www/KeyStore.js">
+        <clobbers target="cordova.plugins.KeyStore" />
+    </js-module>
+
+    <platform name="ios">
+        <podspec>
+            <pods use-frameworks="true">
+                <pod name="KeychainSwift" spec="~> 19.0" />
+            </pods>
+        </podspec>
+            
+        <config-file target="config.xml" parent="/*">
+            <feature name="KeyStore">
+                <param name="ios-package" value="KeyStore" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/KeyStore.swift" />
+    </platform>
+
+
+    <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
+</plugin>

@@ -1,0 +1,17 @@
+{
+  "name": "cordova-plugin-keystore",
+  "version": "0.0.2",
+  "description": "",
+  "cordova": {
+    "id": "cordova-plugin-keystore",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "",
+  "license": "ISC"
+}
