@@ -11,9 +11,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
-* This class echoes a string called from JavaScript.
-*/
 public class KeyStore extends CordovaPlugin {
 
     private SharedPreferences sharedPreferences;
@@ -28,11 +25,9 @@ public class KeyStore extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("echo")) {
-            String message = args.getString(0);
-            this.echo(message, callbackContext);
-            return true;
-        }
+        callbackContext.success("Callback: " + action);
+        return true;
+
         if (action.equals("setItem")) {
             String key = args.getString(0);
             String val = args.getString(1);
