@@ -3,8 +3,11 @@ package com.markartishuk.cordova.plugin;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 
+import org.apache.cordova.PluginResult;
+
 import android.content.Context;
 import android.content.SharedPreferences;
+
 
 
 import org.json.JSONArray;
@@ -18,14 +21,15 @@ public class KeyStore extends CordovaPlugin {
 
 
     public KeyStore() {
-        Context context = this.cordova.getActivity().getApplicationContext();
-        sharedPreferences = context.getSharedPreferences("data", Context.MODE_PRIVATE );
-        editor = sharedPreferences.edit();
+        // Context context = this.cordova.getActivity().getApplicationContext();
+        // sharedPreferences = context.getSharedPreferences("data", Context.MODE_PRIVATE );
+        // editor = sharedPreferences.edit();
     }
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        callbackContext.success("Callback: " + action);
+        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, "Check me out here");
+        callbackContext.sendPluginResult(pluginResult);
         return true;
 
         // if (action.equals("setItem")) {
@@ -42,33 +46,33 @@ public class KeyStore extends CordovaPlugin {
         // return false;
     }
 
-    private void setItem(String key, String value, CallbackContext cb) {
-           if(sharedPreferences == null) {
-                cb.error("shared preferences is null");
-                return;
-            }
+    // private void setItem(String key, String value, CallbackContext cb) {
+    //        if(sharedPreferences == null) {
+    //             cb.error("shared preferences is null");
+    //             return;
+    //         }
 
-            if(editor == null) {
-                cb.error("Editor is null");
-                return;
-            }
-            editor.putString(key, value);
-            editor.commit();
+    //         if(editor == null) {
+    //             cb.error("Editor is null");
+    //             return;
+    //         }
+    //         editor.putString(key, value);
+    //         editor.commit();
 
-            cb.success("Hey!: " + key + " " + value);
+    //         cb.success("Hey!: " + key + " " + value);
 
-    }
+    // }
 
-    private void getItem(String key, CallbackContext cb) {
-         String val = sharedPreferences.getString(key, "");
-         cb.success(val);
-    }
+    // private void getItem(String key, CallbackContext cb) {
+    //      String val = sharedPreferences.getString(key, "");
+    //      cb.success(val);
+    // }
 
-    private void echo(String message, CallbackContext callbackContext) {
-        if (message != null && message.length() > 0) {
-            callbackContext.success(message);
-        } else {
-            callbackContext.error("Expected one non-empty string argument.");
-        }
-    }
+    // private void echo(String message, CallbackContext callbackContext) {
+    //     if (message != null && message.length() > 0) {
+    //         callbackContext.success(message);
+    //     } else {
+    //         callbackContext.error("Expected one non-empty string argument.");
+    //     }
+    // }
 }

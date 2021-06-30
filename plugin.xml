@@ -27,7 +27,7 @@
             </feature>
         </config-file>
 
-        <source-file src="src/android/KeyStore.java" target-dir="src/android/KeyStore.java" />
+        <source-file src="src/android/KeyStore.java" target-dir="src/com/markartishuk/cordova/plugin" />
     </platform> 
 
     <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
