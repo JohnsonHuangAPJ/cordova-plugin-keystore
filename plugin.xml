@@ -20,6 +20,15 @@
         <source-file src="src/ios/KeyStore.swift" />
     </platform>
 
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="KeyStore">
+                <param name="android-package" value="com.markartishuk.cordova.plugin.KeyStore"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/Echo.java" target-dir="src/org/apache/cordova/plugin" />
+    </platform> 
 
     <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
 </plugin>
