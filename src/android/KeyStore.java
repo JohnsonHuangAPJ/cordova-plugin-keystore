@@ -64,6 +64,7 @@ public class KeyStore extends CordovaPlugin {
     }
 
     private void getItem(String key, CallbackContext cb) {
+        Context context = this.cordova.getActivity().getApplicationContext();
         SharedPreferences sharedPreferences = context.getSharedPreferences("data", Context.MODE_PRIVATE );
          if(sharedPreferences == null) {
               PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, "Sharedpreferences is null");
