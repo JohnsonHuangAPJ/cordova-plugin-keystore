@@ -16,16 +16,6 @@ import org.json.JSONObject;
 
 public class KeyStore extends CordovaPlugin {
 
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
-
-
-    public KeyStore() {
-        Context context = this.cordova.getActivity().getApplicationContext();
-        sharedPreferences = context.getSharedPreferences("data", Context.MODE_PRIVATE );
-        editor = sharedPreferences.edit();
-    }
-
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         
@@ -44,6 +34,29 @@ public class KeyStore extends CordovaPlugin {
     }
 
     private void setItem(String key, String value, CallbackContext cb) {
+         Context context = this.cordova.getActivity().getApplicationContext();
+        if(context == null) {
+              PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, "Context is null");
+                cb.sendPluginResult(pluginResult);
+            return;
+        }
+        
+        SharedPreferences sharedPreferences = context.getSharedPreferences("data", Context.MODE_PRIVATE );
+        
+        if(sharedPreferences == null) {
+              PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, "Sharedpreferences is null");
+                cb.sendPluginResult(pluginResult);
+            return;
+        }
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        if(editor == null) {
+              PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, "editor is null");
+                cb.sendPluginResult(pluginResult);
+            return;
+        }
+
         editor.putString(key, value);
         editor.commit();
         PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, "Set -> " + key + ":" + value);
@@ -51,6 +64,12 @@ public class KeyStore extends CordovaPlugin {
     }
 
     private void getItem(String key, CallbackContext cb) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("data", Context.MODE_PRIVATE );
+         if(sharedPreferences == null) {
+              PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, "Sharedpreferences is null");
+                cb.sendPluginResult(pluginResult);
+            return;
+        }
         String val = sharedPreferences.getString(key, "");
         PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, val);
         cb.sendPluginResult(pluginResult);
