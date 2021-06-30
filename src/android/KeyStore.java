@@ -28,18 +28,18 @@ public class KeyStore extends CordovaPlugin {
         callbackContext.success("Callback: " + action);
         return true;
 
-        if (action.equals("setItem")) {
-            String key = args.getString(0);
-            String val = args.getString(1);
-            this.setItem(key, val, callbackContext);
-            return true;
-        }
-        if(action.equals("getItem")) {
-            String key = args.getString(0);
-            this.getItem(key, callbackContext);
-            return true;
-        }
-        return false;
+        // if (action.equals("setItem")) {
+        //     String key = args.getString(0);
+        //     String val = args.getString(1);
+        //     this.setItem(key, val, callbackContext);
+        //     return true;
+        // }
+        // if(action.equals("getItem")) {
+        //     String key = args.getString(0);
+        //     this.getItem(key, callbackContext);
+        //     return true;
+        // }
+        // return false;
     }
 
     private void setItem(String key, String value, CallbackContext cb) {
