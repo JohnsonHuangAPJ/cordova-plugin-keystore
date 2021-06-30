@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-keystore",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Cordova plugin to interface with iOS keychain and android shared preferences",
   "cordova": {
     "id": "cordova-plugin-keystore",
